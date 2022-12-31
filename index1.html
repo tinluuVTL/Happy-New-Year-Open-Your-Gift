@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Countdown to New Year</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <video src="./video/fireworks.mp4" muted autoplay loop></video>
+ <audio src="./Tieng-phao-hoa-no-tren-bau-troi-www_tiengdong_com.mp3" autoplay loop ></audio>
+     <div class="container">
+      <h2>
+        <span>Countdown to New Year</span><span id="year">Calculating...</span>
+      </h2>
+      <div class="countdown">
+        <div id="day">NA</div>
+        <div id="hour">NA</div>
+        <div id="minute">NA</div>
+        <div id="second">NA</div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      setInterval(function () {
+        let today = new Date();
+        let nextYear = today.getFullYear() + 1;
+        let countDate = new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
+        let now = new Date().getTime();
+        gap = countDate - now;
+
+        let second = 1000;
+        let minute = second * 60;
+        let hour = minute * 60;
+        let day = hour * 24;
+
+        let d = Math.floor(gap / day);
+        let h = Math.floor((gap % day) / hour);
+        let m = Math.floor((gap % hour) / minute);
+        let s = Math.floor((gap % minute) / second);
+
+        document.getElementById("day").innerText=d;
+        document.getElementById("hour").innerText=h;
+        document.getElementById("minute").innerText=m;
+        document.getElementById("second").innerText=s;
+        document.getElementById("year").innerText=nextYear;
+        
+      }, 1000)();
+    </script>
+  </body>
+</html>
